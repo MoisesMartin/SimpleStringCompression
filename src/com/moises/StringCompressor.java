@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class StringCompressor {
+    public ArrayList<Character> getChars() {
+        return chars;
+    }
+
+    public void setChars(ArrayList<Character> chars) {
+        this.chars = chars;
+    }
+
     private ArrayList<Character> chars = new ArrayList<>();
 
     //Default Constructor
@@ -22,13 +30,20 @@ public class StringCompressor {
         Collections.sort(chars);
         return chars;
     }
-    //If invoked before sorting it will just show the char list as given originally
+    //If invoked before sorting it won't have any values
     public void showList(){
+        if(chars.size()==0){
+            splitWord("NULL");
+        }
         for(int i=0; i<chars.size();i++){
-            System.out.print(chars.get(i) +", ");
             if(i == chars.size()-1){
                 System.out.print(chars.get(i));
+            }else{
+                System.out.print(chars.get(i) +", ");
             }
         }
+    }
+    public void simpleCompression(ArrayList<Character> collection){
+
     }
 }
