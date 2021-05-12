@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class StringCompressor {
+    private ArrayList<Character> chars = new ArrayList<>();
+
+
     public ArrayList<Character> getChars() {
         return chars;
     }
@@ -12,7 +15,7 @@ public class StringCompressor {
         this.chars = chars;
     }
 
-    private ArrayList<Character> chars = new ArrayList<>();
+
 
     //Default Constructor
     public StringCompressor(){
