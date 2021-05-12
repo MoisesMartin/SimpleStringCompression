@@ -60,7 +60,7 @@ public class StringCompressor {
         char currentChar = collection.get(index), nextChar = collection.get(nextIndex);
         int nextASCII=(int)nextChar;
 
-
+        //1111111111111111111111111111111111111111111111111
         for(int j=0;j<collection.size();j++){
             //Quiero comparar el char actual con el siguiente
             try{
@@ -69,6 +69,7 @@ public class StringCompressor {
                 currentChar = collection.get(index);
                 nextChar = collection.get(nextIndex);
             }catch (Exception e){
+                //Como siempre va a votar la excepcion al ultimo, le digo pues ya el valor del ultimo elemento directamente :V
                 asciiCode.add((int)collection.get(collection.size()-1));
             }
             //Para tomar sus codigos ascii siempre y cuando el caracter actual sea distinto del siguiente para tener una lista de caracteres unicos
@@ -77,10 +78,12 @@ public class StringCompressor {
                 asciiCode.add(currentASCII);
             }
         }
+        //111111111111111111111111111111111111111111111111
         //solo pa' debugear quiero mostrar los valores del asciiCode(ArrayList)
         for (Integer val:asciiCode) {
             System.out.print(val+" ");
         }
+        System.out.println("");
     }
     public HashMap<Integer,Character> getRepeatedCharactersCounts(ArrayList<Character> collection){
         HashMap<Integer,Character> getCounts = new HashMap<>();
