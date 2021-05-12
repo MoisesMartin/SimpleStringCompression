@@ -11,9 +11,10 @@ public class Main {
         input = userInput.next();
         StringCompressor compressor = new StringCompressor();
         //ejecutando el metodo sortCharacters el cual necesita del metodo splitWord
-        compressor.sortCharacters(compressor.splitWord(input));
+        compressor.compressString(compressor.sortCharacters(compressor.splitWord(input)));
         //El metodo showList debe invocarse solamente después de haberse ejecutado el metodo split por que si y ya :V
         compressor.showList();
+
 
     }
 }
