@@ -7,6 +7,7 @@ import java.util.HashMap;
 public class StringCompressor {
     private ArrayList<Character> chars = new ArrayList<>();
     private ArrayList<Integer> asciiCode = new ArrayList<>();
+    private ArrayList<Integer> repeatCounts = new ArrayList<>();
     private int maxCapacity = 100;
     StringBuilder finalStr = new StringBuilder(maxCapacity);
 
@@ -24,6 +25,8 @@ public class StringCompressor {
     public StringCompressor(){
 
     }
+
+
     //this method takes the user input and split it in to an arraylist in order to be able to sort it quickly
     public ArrayList<Character> splitWord(String userInput){
         if(userInput.length() <= maxCapacity){
@@ -52,7 +55,7 @@ public class StringCompressor {
             }
         }
     }
-    public void compressString(ArrayList<Character> collection){
+    public String compressString(ArrayList<Character> collection){
         //La idea de ordenarlos es que ponga juntas las letras repetidas para hacer una comparacion de un index y un index+1
 
         int index = 0, nextIndex= 0;
@@ -69,7 +72,7 @@ public class StringCompressor {
                 currentChar = collection.get(index);
                 nextChar = collection.get(nextIndex);
             }catch (Exception e){
-                //Como siempre va a votar la excepcion al ultimo, le digo pues ya el valor del ultimo elemento directamente :V
+                //Como siempre va a botar la excepcion al ultimo, le digo pues ya el valor del ultimo elemento directamente :V
                 asciiCode.add((int)collection.get(collection.size()-1));
             }
             //Para tomar sus codigos ascii siempre y cuando el caracter actual sea distinto del siguiente para tener una lista de caracteres unicos
@@ -77,13 +80,25 @@ public class StringCompressor {
                 int currentASCII = (int)currentChar;
                 asciiCode.add(currentASCII);
             }
+            if(nextChar == currentChar){
+                repeatedCount = 0;
+                repeatedCount++;
+                repeatCounts.add((repeatedCount));
+            }else{
+                repeatCounts.add(1);
+            }
         }
         //111111111111111111111111111111111111111111111111
         //solo pa' debugear quiero mostrar los valores del asciiCode(ArrayList)
         for (Integer val:asciiCode) {
             System.out.print(val+" ");
         }
+        System.out.println();
+        for(Integer count: repeatCounts){
+            System.out.print(count+" ");
+        }
         System.out.println("");
+        return finalStr.toString();
     }
     public HashMap<Integer,Character> getRepeatedCharactersCounts(ArrayList<Character> collection){
         HashMap<Integer,Character> getCounts = new HashMap<>();
